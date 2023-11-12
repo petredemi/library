@@ -129,6 +129,7 @@ label{
     height: 500px;
     margin: 5px;
     rotate: -90deg;
+    color: darkblue;
     background: linear-gradient( 145deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
 }
 
