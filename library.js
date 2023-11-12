@@ -28,7 +28,7 @@ function selveBooks(title, autor, year){
     newBook.classList.add(`book${s}`, 'book');
     books.appendChild(newBook);
    // newBook.setAttribute('style', `background:${rbw[b]}`);
-    newBook.textContent = book.title + ',  ' + book.autor + ',  ' + book.year;
+    newBook.textContent = book.title + ', by: ' + book.autor + ',  ' + book.year;
     node = document.querySelectorAll('#books > p');
 }
 
@@ -37,7 +37,8 @@ selveBooks('Clarissa', 'Samuel Richardson', '1748');
 selveBooks('Nineteen Eighty-Four', 'George Orwell', '1949');
 selveBooks('Petre', 'Zoia', 2004);
 selveBooks('Diana', 'Zoia', 2007);
-
+selveBooks('Enigma Otiliei', 'George Călinescu', '1938');
+selveBooks('Moara cu Noroc','Ioan Slavici', '1881');
 console.table(myLibrary);
 console.log(myLibrary.length);
 console.log(myLibrary);
@@ -69,7 +70,7 @@ function addBook(){
         newBook.classList.add(`#book${x}`,'book');
         books.appendChild(newBook);
         newBook.setAttribute('style', `background:${rbw[b]}`);
-        newBook.textContent = book.title + ',  ' + book.autor + ',  ' + book.year;
+        newBook.textContent = book.title + ',  by:' + book.autor + ',  ' + book.year;
         console.log(book);
         console.log(position);
         console.log(myLibrary.length);

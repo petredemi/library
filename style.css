@@ -26,7 +26,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80vw;
+    width: 100%;
     border: 1px solid red;
     background: linear-gradient( 30deg, rgb(244, 91, 91), rgb(104, 111, 243));
 
@@ -54,7 +54,8 @@ li{
 input{
     height: 1.5rem;
     font-size: 1rem;
-    width: 15rem;   
+    width: 15rem; 
+    border: 1px solid black;  
 }
 input:hover{
     border: 2px solid red;
@@ -176,3 +177,16 @@ label{
     border: 2px solid black;
     font-size: 1.1rem;
 }
+.book6{
+    background: rgb(21, 5, 5);
+    color: silver;
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
+.book7{
+    background: brown;
+    color: yellow;
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
+
