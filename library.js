@@ -9,6 +9,8 @@ let book;
 let t = document.querySelector('#title');
 let a = document.querySelector('#autor');
 let y = document.querySelector('#year');
+const rbw = ['red', 'orange', 'green', 'blue', 'brown', 'orange'];
+
 let myLibrary= [];
 //object constructor
 let newBook;
@@ -17,12 +19,15 @@ function Book(title, autor, year){
     this.autor = autor;
     this.year = year;
 }
+let s = 0;
 function selveBooks(title, autor, year){
+    s = s + 1;
     book= new Book(title, autor, year);
     myLibrary.push(book);
     newBook = document.createElement('p');
-    newBook.classList.add('book');
+    newBook.classList.add(`book${s}`, 'book');
     books.appendChild(newBook);
+   // newBook.setAttribute('style', `background:${rbw[b]}`);
     newBook.textContent = book.title + ',  ' + book.autor + ',  ' + book.year;
     node = document.querySelectorAll('#books > p');
 }
@@ -47,9 +52,13 @@ console.log(myLibrary);
 //document.getElementById('book3').innerHTML = b3;
 let x = 3;
 let n = 3;
+let b = 0;
 function addBook(){
         node[n +1];
         x = x + 1;
+      //  b = b + 1;
+        b = Math.floor(Math.random() * 5);
+    //    if( b == 5){ b = 0}
         title = t.value;
         autor = a.value;
         year = y.value;
@@ -59,6 +68,7 @@ function addBook(){
         newBook = document.createElement('p');
         newBook.classList.add(`#book${x}`,'book');
         books.appendChild(newBook);
+        newBook.setAttribute('style', `background:${rbw[b]}`);
         newBook.textContent = book.title + ',  ' + book.autor + ',  ' + book.year;
         console.log(book);
         console.log(position);
@@ -72,9 +82,8 @@ function addBook(){
     }
 
 
-add.addEventListener('click', () => {
+add.addEventListener('click', () => { 
     addBook();
-
     console.log(node);
 });
 
@@ -100,8 +109,8 @@ lookfor.addEventListener('click', () => {
     document.getElementById('dem').innerHTML = lookTitle();
     document.getElementById('book_found').innerHTML = 'Book at index:  ' +lookIndex();
     console.log(myLibrary);
- console.log(lookIndex());
- console.log(index);
+    console.log(lookIndex());
+    console.log(index);
 });
    
 let b1 = document.querySelector('.books > #book1');

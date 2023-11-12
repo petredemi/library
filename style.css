@@ -14,19 +14,34 @@
     font-family: myfont4;
     src: url(./fonts/DancingScript-VariableFont_wght.ttf);
 }
+
 body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.library{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    border: 1px solid red;
+    background: linear-gradient( 30deg, rgb(244, 91, 91), rgb(104, 111, 243));
+
+
+}
 h1 {
     font-family: myfont4, sans-serif, 'Times New Roman', Times, serif;
     text-align: center;
     letter-spacing: 3px;
     font-weight: 900;
-    font-size: 3rem;
+    font-size: 5rem;
     width: 400px;
+    color: bisque;
+    text-shadow: 1px 1px 1px black;
+
 }
 
 li{
@@ -44,8 +59,17 @@ input{
 input:hover{
     border: 2px solid red;
 }
+legend{
+    font-size: 1.5rem;
+    color: orange;
+    font-weight: 800;
+    text-shadow: 1px 1px 1px black;
+
+}
 fieldset{
     width: 370px; 
+    background: linear-gradient( 30deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
+
 }
 .buttons{
     box-sizing: border-box;
@@ -56,11 +80,16 @@ fieldset{
 button{
     margin: 10px;
     font-size: 1rem;
+    background: rgb(140, 240, 166);
+    height: 2rem;
+    font-weight: 600;
 }
 label{
     margin-right: 10px;
     font-size: 1.2rem;
     font-family: myfont3, 'Times New Roman', Times, serif;
+    color: red;
+    text-shadow: 1px 1px 1px black;
 }
 #book_found{
     display: flex;
@@ -68,6 +97,8 @@ label{
     border:1px solid red;
     height: 2rem;
     width: 400px;
+    background:white;
+    color: black;
 }
 #dem{
     box-sizing:content-box;
@@ -77,7 +108,7 @@ label{
     background-color: rgb(118, 243, 197);
     width: 400px;
     align-items:end;
-    margin-bottom: -100px;
+    margin-bottom: -20px;
     margin-top: 5px;
 }
 
@@ -85,7 +116,7 @@ label{
     text-align: center;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow: hidden;
     justify-content:end;
     align-items: left;
     border: 8px solid black;
@@ -94,11 +125,12 @@ label{
     padding-top: 20px;
     padding-bottom: 10px;
     width: 390;
-    height: 600px;
+    height: 500px;
     margin: 5px;
     rotate: -90deg;
     background: linear-gradient( 30deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
 }
+
 
 .book{
     display:flex;
@@ -109,6 +141,38 @@ label{
     width: 370px;
     margin:3px;
     rotate: 3deg;
-    background: linear-gradient(to Right, rgb(174, 171, 171), white, rgb(163, 160, 160), white, rgb(170, 166, 166));
+    color: rgb(223, 216, 216);
+    font-size: 1.1rem;
+    border: 2px solid black;
+}
+.book1{
+    background: brown;
+    color: yellow;
+    border: 2px solid black;
+    font-size: 1.1rem;
 }
 
+.book2{
+    background: rgb(21, 5, 5);
+    color: silver;
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
+.book3{
+    background: rgb(235, 4, 4);
+    color: rgb(247, 233, 233);
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
+.book4{
+    background: rgb(2, 76, 15);
+    color: rgb(247, 233, 233);
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
+.book5{
+    background: rgb(1, 10, 64);
+    color: rgb(249, 249, 36);
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
