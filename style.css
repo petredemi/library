@@ -14,12 +14,18 @@
     font-family: myfont4;
     src: url(./fonts/DancingScript-VariableFont_wght.ttf);
 }
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 h1 {
-    font-family: myfont4, sans-serif;
+    font-family: myfont4, sans-serif, 'Times New Roman', Times, serif;
     text-align: center;
     letter-spacing: 3px;
-    font-weight: 800;
-    font-size: 2.5rem;
+    font-weight: 900;
+    font-size: 3rem;
     width: 400px;
 }
 
@@ -35,39 +41,63 @@ input{
     font-size: 1rem;
     width: 15rem;   
 }
+input:hover{
+    border: 2px solid red;
+}
 fieldset{
-    margin-left: 20px;
-    width: 370px;
-    
+    width: 370px; 
+}
+.buttons{
+    box-sizing: border-box;
+    width: 400px;
+    text-align: center;
+    margin-top: 20px;
 }
 button{
-    margin: 30px;
+    margin: 10px;
+    font-size: 1rem;
 }
 label{
     margin-right: 10px;
+    font-size: 1.2rem;
+    font-family: myfont3, 'Times New Roman', Times, serif;
 }
-*{
-    margin-left: 2px;
+#book_found{
+    display: flex;
+    align-items: end;
+    border:1px solid red;
+    height: 2rem;
+    width: 400px;
 }
 #dem{
-    box-sizing: border-box;
+    box-sizing:content-box;
+    display: flex;
     height: 2rem;
     border: 1px solid red;
     background-color: rgb(118, 243, 197);
     width: 400px;
-    margin-left: 20px;
+    align-items:end;
+    margin-bottom: -100px;
+    margin-top: 5px;
 }
 
-#book_found{
-    align-items: baseline;
-    border:1px solid red;
-    height: 2rem;
-    width: 400px;
-    margin-left: 20px;
-}
 #books{
     text-align: center;
-    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    justify-content:end;
+    align-items: left;
+    border: 8px solid black;
+    border-left: 20px solid black;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    width: 390;
+    height: 600px;
+    margin: 5px;
+    rotate: -90deg;
+    background: linear-gradient( 30deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
 }
 
 .book{
@@ -76,8 +106,9 @@ label{
     justify-content: center;
     border: 1px solid black;
     height: 2rem;
-    width: 400px;
-    margin-top: 5px;
+    width: 370px;
+    margin:3px;
+    rotate: 3deg;
     background: linear-gradient(to Right, rgb(174, 171, 171), white, rgb(163, 160, 160), white, rgb(170, 166, 166));
 }
 
