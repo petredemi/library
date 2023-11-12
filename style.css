@@ -28,7 +28,7 @@ body{
     align-items: center;
     width: 100%;
     border: 1px solid red;
-    background: linear-gradient( 30deg, rgb(244, 91, 91), rgb(104, 111, 243));
+    background: linear-gradient( 110deg, rgb(176, 172, 172), white,rgb(180, 178, 178),white, rgb(181, 179, 179));
 
 
 }
@@ -39,7 +39,7 @@ h1 {
     font-weight: 900;
     font-size: 5rem;
     width: 400px;
-    color: bisque;
+    color: rgb(246, 147, 27);
     text-shadow: 1px 1px 1px black;
 
 }
@@ -70,7 +70,7 @@ legend{
 fieldset{
     width: 370px; 
     background: linear-gradient( 30deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
-
+    border: 2px solid black;
 }
 .buttons{
     box-sizing: border-box;
@@ -129,7 +129,7 @@ label{
     height: 500px;
     margin: 5px;
     rotate: -90deg;
-    background: linear-gradient( 30deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
+    background: linear-gradient( 145deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
 }
 
 

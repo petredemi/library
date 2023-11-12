@@ -9,7 +9,7 @@ let book;
 let t = document.querySelector('#title');
 let a = document.querySelector('#autor');
 let y = document.querySelector('#year');
-const rbw = ['red', 'orange', 'green', 'blue', 'brown', 'orange'];
+const rbw = ['red', 'orange','darkblue','darkgreen', 'brown', 'darkorange'];
 
 let myLibrary= [];
 //object constructor
