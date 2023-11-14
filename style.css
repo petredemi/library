@@ -152,6 +152,7 @@ label{
     text-align: center;
     background-color: rgb(170, 251, 216);
     border-radius: 20px;
+    display: flex;
 }
 
 #books{
@@ -166,7 +167,7 @@ label{
     padding-right: 10px;
     padding-top: 20px;
     padding-bottom: 10px;
-    width: 390px;
+    width: auto;
     max-height: 400px;
     margin: 20px;
     margin-top: 60px;
