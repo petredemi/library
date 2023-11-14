@@ -11,7 +11,7 @@ let a = document.querySelector('#autor');
 let y = document.querySelector('#year');
 let p = document.querySelector('#pages');
 const rbw = ['red', 'orange','darkblue','darkgreen', 'brown', 'darkorange'];
-const height = ['40','40','45', '50'];
+const height = ['35','40','45', '30'];
 
 let myLibrary= [];
 //object constructor

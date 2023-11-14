@@ -23,14 +23,19 @@ body{
 }
 .library{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     align-items: center;
     width: 100%;
     border: 1px solid red;
     background: rgb(253, 242, 219);
 
-
+}
+.library_inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 h1 {
     font-family: myfont4, sans-serif, 'Times New Roman', Times, serif;
@@ -100,7 +105,8 @@ label{
     display: flex;
     align-items: center;
     padding: 10px;
-    margin-top: 20px;
+    margin: 20px;
+    margin-bottom: 40px;
     border: 2px solid black;
     height: fit-content;
     width: auto;
@@ -133,7 +139,7 @@ label{
     text-shadow: 1px 1px 1px black;
     font-weight: 700;
     background-color: rgb(118, 243, 197);
-    width: 300px;
+    width: 250px;
     align-items:center;
     padding: 5px;
     justify-content: center;
@@ -144,20 +150,19 @@ label{
     text-align: center;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: scroll;
     justify-content:end;
     align-items: left;
     border: 8px solid black;
-    border-left: 20px solid black;
     padding-right: 10px;
     padding-top: 20px;
     padding-bottom: 10px;
-    width: 390;
-    height: 500px;
+    width: 390px;
+    max-height: 400px;
     margin: 5px;
-    rotate: -90deg;
     color: darkblue;
     background: linear-gradient( 145deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
+    rotate: -90deg;
 }
 
 
@@ -165,11 +170,11 @@ label{
     display:flex;
     align-items: center;
     justify-content: center;
+    rotate: 3deg;
     border: 1px solid black;
     height: 2rem;
     width: 370px;
     margin:3px;
-    rotate: 3deg;
     color: rgb(223, 216, 216);
     font-size: 1.1rem;
     border: 2px solid black;
@@ -221,3 +226,267 @@ label{
     font-size: 1.1rem;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*@font-face {
+    font-family: myfont1;
+    src: url(./fonts/Ballet-Regular-VariableFont_opsz.ttf);
+}
+@font-face {
+    font-family: myfont2;
+    src: url(./fonts/BreeSerif-Regular.ttf);
+}
+@font-face {
+    font-family: myfont3;
+    src: url(./fonts/CroissantOne-Regular.ttf);
+}
+@font-face {
+    font-family: myfont4;
+    src: url(./fonts/DancingScript-VariableFont_wght.ttf);
+}
+
+/*body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.library{
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+    background: rgb(253, 242, 219);
+}
+.library_inputs{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    border: 1px solid red;
+}
+
+h1 {
+    font-family: myfont4, sans-serif, 'Times New Roman', Times, serif;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 900;
+    font-size: 5rem;
+    width: 400px;
+    color: rgb(27, 31, 246);
+    text-shadow: 1px 1px 1px black;
+
+}
+form{
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 2px;
+    padding: 10px;
+}
+input{
+    height: 1.5rem;
+    font-size: 1rem;
+    width: 60%; 
+    border: 1px solid black;  
+}
+input:hover{
+    border: 2px solid red;
+}
+legend{
+    font-size: 2rem;
+    color: rgb(0, 21, 255);
+    font-weight: 800;
+    text-shadow: 1px 1px 1px black;
+
+}
+fieldset{
+    width: 101%; 
+    background: linear-gradient( 30deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.buttons{
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+button{
+    margin: 10px;
+    font-size: 1rem;
+    background: rgb(43, 120, 236);
+    height: 2rem;
+    font-weight: 600;
+    border-radius: 5px;
+    color: white;
+}
+label{
+    margin-right: 10px;
+    font-size: 1.2rem;
+    font-family: myfont3, 'Times New Roman', Times, serif;
+    color: red;
+    text-shadow: 1px 1px 1px black;
+}
+#search_rezult{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 20px;
+    border: 3px solid black;
+    box-shadow: 2px 4px 3px black;
+    height: fit-content;
+    width: 100%;
+    border-radius: 15px;
+    background-color: cadetblue;
+    flex:auto;
+}
+#book_index, #dem{
+    border-radius: 10px;
+    height: 8rem;
+    border: 3px solid rgb(220, 79, 242);
+
+}
+
+#book_index{
+    display: flex;
+    align-items: end;
+    width: 30%;
+    background:white;
+    color: black;
+    margin-right: 20px;
+    font-size: 1.1rem;
+    padding: 5px;
+    justify-content:center;
+    align-items: center;
+}
+.book_info{
+    margin: auto;
+    width: 70%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#dem{
+    color: rgb(255, 17, 17);
+    text-shadow: 1px 1px 1px black;
+    font-weight: 700;
+    background-color: rgb(118, 243, 197);
+    width: 95%;
+    align-items:center;
+    text-align: center;
+    margin: auto;
+    padding: 5px;
+    font-size: 1.5rem;
+}
+#dem:first-letter{
+    color: rgb(255, 251, 36);
+    font-size: 2.5rem;
+}
+
+#books{
+    text-align: center;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content:end;
+    overflow-y:hidden;
+    border: 8px solid black;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    max-height: 100%;
+    width: 400px;
+    margin: 5px;
+    color: darkblue;
+    background: linear-gradient( 145deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
+}
+
+
+.book{
+    display:flex;
+    justify-content: center;
+    border: 1px solid black;
+    height: 35px;
+    width: 370px;
+    margin:3px;
+    color: rgb(223, 216, 216);
+    font-size: 1.1rem;
+    border: 2px solid black;
+    border-radius: 15px 5px 5px 15px;
+}
+.book1{
+    background: brown;
+    color: yellow;
+    border: 2px solid black;
+    font-size: 1.1rem;
+    height: 50px;
+}
+
+.book2{
+    background: rgb(21, 5, 5);
+    color: silver;
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
+.book3{
+    background: rgb(235, 4, 4);
+    color: rgb(247, 233, 233);
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
+.book4{
+    background: rgb(2, 76, 15);
+    color: rgb(247, 233, 233);
+    border: 2px solid black;
+    font-size: 1.1rem;
+    height: 40px;
+}
+.book5{
+    background: rgb(1, 10, 64);
+    color: rgb(249, 249, 36);
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
+.book6{
+    background: rgb(21, 5, 5);
+    color: silver;
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
+.book7{
+    background: brown;
+    color: yellow;
+    border: 2px solid black;
+    font-size: 1.1rem;
+}
+
+*/
