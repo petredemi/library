@@ -103,8 +103,9 @@ t.addEventListener('click', () => {
     t.value = '';
     document.getElementById('dem').innerHTML = '';
     document.getElementById('book_index').innerHTML = '';
-
-
+    a.value = '';
+    y.value = '';
+    p.value = '';
 });
 
 let look = false;
