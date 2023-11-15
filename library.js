@@ -4,6 +4,7 @@ const add = document.querySelector('#add');
 const remove = document.querySelector('#remove');
 const lookfor = document.querySelector('#lookfor');
 let books = document.querySelector('#books');
+//let input = document.querySelectorAll('fieldset > li > input');
 let node;
 let book;
 let t = document.querySelector('#title');
@@ -94,7 +95,16 @@ function addBook(){
 add.addEventListener('click', () => {
     if (t.value == 0) return; 
     addBook();
+    document.getElementById('dem').innerHTML = '';
+    document.getElementById('book_index').innerHTML = '';
     console.log(node);
+});
+t.addEventListener('click', () => {
+    t.value = '';
+    document.getElementById('dem').innerHTML = '';
+    document.getElementById('book_index').innerHTML = '';
+
+
 });
 
 let look = false;
@@ -105,7 +115,7 @@ function lookTitle(){
     if (book_item == undefined){
         return 'Sorry, This book is not in the Library';
     }else{
-    return 'title: '+ x +',   by:  ' + book_item.autor + ',  year: ' + book_item.year + ',  pages ' + book_item.pages;
+    return 'title: '+ x +',   by:  ' + book_item.autor + ',  year: ' + book_item.year + ',    ' + book_item.pages + ' pages';
     }
 }
 let index;
@@ -122,7 +132,12 @@ lookfor.addEventListener('click', () => {
     let z = lookIndex() + 1;
     if (z == undefined || z == -1) return;
     document.getElementById('book_index').innerHTML = 'Book at index:  ' + z + '  on shelf';
+    if (index != undefined || index != -1){
+        a.value = myLibrary[index].autor;
+        y.value = myLibrary[index].year;
+        p.value = myLibrary[index].pages
 
+    } 
     console.log(myLibrary);
     console.log(lookIndex());
     console.log(index);

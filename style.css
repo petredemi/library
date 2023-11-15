@@ -27,7 +27,7 @@ body{
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
-    background: rgb(254, 255, 190);
+    background: rgba(254, 255, 190, 0.774);
 
 }
 .library_inputs{
@@ -35,7 +35,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(252, 149, 168);
+    background-color: rgba(81, 81, 81, 0.65);
     border-radius: 20px;
 }
 h1 {
@@ -66,6 +66,33 @@ input{
 input:hover{
     border: 2px solid red;
 }
+#read_status {
+    font-size: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 1px;
+}
+
+#read_status .radio{
+    width: fit-content;
+    margin: 0px;
+    margin-right: 20px;
+}
+li.label1{
+    font-size: 1.2rem;
+    color: rgb(12, 146, 90);
+    font-weight: 800;
+
+
+}
+#read_status > .radio > label{
+    width: fit-content;
+    font-size: 1rem;
+}
+#read, #noread{
+    width: fit-content;
+}
 legend{
     font-size: 2rem;
     color: rgb(0, 21, 255);
@@ -75,7 +102,7 @@ legend{
 }
 fieldset{
     width: 400px; 
-    background: linear-gradient( 30deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
+    background: linear-gradient( 90deg, rgb(206, 205, 205), white, rgb(227, 225, 225), white, rgb(216, 216, 216));
     border: 2px solid black;
     border-radius: 5px;
 }
@@ -150,7 +177,7 @@ label{
     border: 1px solid black;
     height: 100vh;
     text-align: center;
-    background-color: rgb(170, 251, 216);
+    background-color: rgba(170, 251, 216, 0.67);
     border-radius: 20px;
     display: flex;
 }
@@ -172,7 +199,7 @@ label{
     margin: 20px;
     margin-top: 60px;
     color: darkblue;
-    background: linear-gradient( 145deg, rgb(168, 161, 161), white, rgb(203, 200, 200), white, rgb(170, 165, 165));
+    background: linear-gradient( 145deg, brown, rgb(61, 61, 61), brown, rgb(64, 63, 63), brown);
     rotate: -90deg;
 }
 
