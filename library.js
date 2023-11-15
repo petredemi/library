@@ -4,6 +4,7 @@ const add = document.querySelector('#add');
 const remove = document.querySelector('#remove');
 const lookfor = document.querySelector('#lookfor');
 let books = document.querySelector('#books');
+let shelf1 = document.querySelector('.shelf1');
 //let input = document.querySelectorAll('fieldset > li > input');
 let node;
 let book;
@@ -34,6 +35,7 @@ function shelfBooks(title, autor, year, pages){
    // newBook.setAttribute('style', `background:${rbw[b]}`);
     newBook.textContent = book.title + ', by: ' + book.autor + ',  ' + book.year;
     node = document.querySelectorAll('#books > p');
+    console.log(newBook);
 }
 
 shelfBooks('The Pilgrims Progress', 'John Bunyan ', '1678', '234');
@@ -74,7 +76,12 @@ function addBook(){
         let position = myLibrary.indexOf(book);
         newBook = document.createElement('p');
         newBook.classList.add(`#book${x}`,'book');
-        books.appendChild(newBook);
+        if(myLibrary.length < 10 ){
+            books.appendChild(newBook);
+        }else {
+            shelf1.appendChild(newBook);
+        }
+
     //    newBook.setAttribute('style', `background:${rbw[b]}`);//`height:${height[h]}px`);
         newBook.style.backgroundColor = `${rbw[b]}`;
         newBook.style.height= `${height[h]}px`;
