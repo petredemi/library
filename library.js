@@ -26,6 +26,34 @@ function uncheck(){
     document.getElementById('yes').checked = false;
     document.getElementById('no').checked = false;
 }
+function radioInput(yes, no){
+    if( yes.checked == true && no.checked ==false){
+        radio = 'yes';
+        checkY();
+        uncheckN();
+    }else if(yes.checked == false && no.checked == true){
+        radio = 'no';
+        checkN();
+        uncheckY();
+    }else{
+        radio = '';
+    }
+   // uncheck();
+    return radio;
+}
+function checkReading(){
+    if(radio == 'yes'){
+        checkY();
+        uncheckN();
+    } else if(radio == 'no'){
+        checkN();
+        uncheckY();
+
+    }else{
+        uncheck();
+    
+    }
+}
 
 
 let node;
@@ -48,8 +76,10 @@ function Book(title, autor, year, pages, radio){
     this.radio = radio;
         
 }
+//radioInput(yes, no);
 let s = 0;
 function shelfBooks(title, autor, year, pages, radio){
+    radioInput(yes, no);
     s = s + 1;
     book= new Book(title, autor, year, pages, radio);
     myLibrary.push(book);
@@ -63,42 +93,18 @@ function shelfBooks(title, autor, year, pages, radio){
 
 }
 
-shelfBooks('The Pilgrims Progress', 'John Bunyan ', '1678', '234', 'yes');
-shelfBooks('Clarissa', 'Samuel Richardson', '1748', '335', 'yes');
+shelfBooks('The Pilgrims Progress', 'John Bunyan ', '1678', '234','yes');
+shelfBooks('Clarissa', 'Samuel Richardson', '1748', '335', 'no');
 shelfBooks('Nineteen Eighty-Four', 'George Orwell', '1949', '432', 'no');
 shelfBooks('Petre', 'Zoia', '2004', '231', 'yes');
 shelfBooks('Diana', 'Zoia', '2007', '146', 'yes');
 shelfBooks('Enigma Otiliei', 'George Călinescu', '1938', '243', 'no');
 shelfBooks('Moara cu Noroc','Ioan Slavici', '1881', '323', 'yes');
-//Book.read_status();
+
 console.table(myLibrary);
 console.log(myLibrary.length);
 console.log(myLibrary);
 
-function radioInput(yes, no){
-    if( yes.checked == true && no.checked ==false){
-        radio = 'yes';
-        checkY();
-    }else if(yes.checked == false && no.checked == true){
-        radio = 'no';
-        checkN()
-    }else{
-        radio = '';
-    }
-  //  uncheck();
-    return radio;
-}
-function checkReading(){
-    if(radio == 'yes'){
-        checkY();
-    } else if(radio == 'no'){
-        checkN();
-
-    }else{
-        uncheck();
-    
-    }
-}
 
 let x = 3;
 let n = 3;
@@ -106,10 +112,8 @@ let h = 0;
 function addBook(){
         node[n +1];
         x = x + 1;
-      //  b = b + 1;
         let b = Math.floor(Math.random() * 5);
         h = Math.floor(Math.random() * 4);
-    //    if( b == 5){ b = 0}
         title = t.value;
         autor = a.value;
         year = y.value;
@@ -139,6 +143,7 @@ function addBook(){
         a.value = '';
         y.value = '';
         p.value = '';
+        uncheck();
         node = document.querySelectorAll('#books > p');
     }
 
@@ -158,6 +163,7 @@ t.addEventListener('click', () => {
     a.value = '';
     y.value = '';
     p.value = '';
+   // myLibrary[index].radio = radioInput(yes, no);
     uncheck();
 });
 
@@ -190,13 +196,17 @@ lookfor.addEventListener('click', () => {
         a.value = myLibrary[index].autor;
         y.value = myLibrary[index].year;
         p.value = myLibrary[index].pages;
-      //  yes.checked = myLibrary[index].radio;
-       // no.checked = myLibrary[index].radio;
-    //   checkReading();
-        console.log(radio);
-        checkReading();
-
-    } 
+        let x = myLibrary[index].radio;
+        console.log(x);
+    
+        if ( x == 'yes'){
+            
+            checkY();
+        }else if (x == 'no'){
+            checkN();
+        }
+    }
+    
     console.log(myLibrary);
     console.log(lookIndex());
     console.log(index);
