@@ -54,6 +54,9 @@ function checkReading(){
     
     }
 }
+function saveChanges(){
+    return radioInput();
+}
 
 
 let node;
@@ -190,24 +193,27 @@ function lookIndex(){
 lookfor.addEventListener('click', () => {
     document.getElementById('dem').innerHTML = lookTitle();
     let z = lookIndex() + 1;
-    if (z == undefined || z == -1) return;
+    if (z == undefined || z == -1 || z == 0) return;
     document.getElementById('book_index').innerHTML = 'Book at index:  ' + z + '  on shelf';
     if (index != undefined || index != -1){
         a.value = myLibrary[index].autor;
         y.value = myLibrary[index].year;
         p.value = myLibrary[index].pages;
         let x = myLibrary[index].radio;
-        console.log(x);
-    
-        if ( x == 'yes'){
-            
+        console.log(x); 
+        if ( x == 'yes'){          
             checkY();
         }else if (x == 'no'){
             checkN();
         }
+        
+        yes.addEventListener('click', () => {
+            myLibrary[index].radio = 'yes';
+        });
+        no.addEventListener('click', () => {
+            myLibrary[index].radio = 'no'
+        })
     }
-    
-    console.log(myLibrary);
     console.log(lookIndex());
     console.log(index);
 });
