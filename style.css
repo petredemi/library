@@ -185,7 +185,7 @@ label{
     display: block;
 }
 
-#books, .shelf1{
+#shelf1, .shelf2{
     text-align: center;
     display: flex;
     flex-direction: column;
