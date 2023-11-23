@@ -8,8 +8,8 @@ let shelf2 = document.querySelector('.shelf2');
 let yes = document.querySelector('#yes');
 let no = document.querySelector('#no');
 
-//radio check functions
-function checkY() {
+//radio check functions Y for yes and N for no 
+function checkY() { 
     document.getElementById("yes").checked = true;
   }
   function uncheckY(){
@@ -56,18 +56,21 @@ function saveChanges(){
     return radioInput();
 }
 
-let node;
-let book;
+let node; // node created -nodelist
+let book; // book object for each book added
 let t = document.querySelector('#title');
 let a = document.querySelector('#autor');
 let y = document.querySelector('#year');
 let p = document.querySelector('#pages');
+let index; // books in lybrary array;
+
+
 const rbw = ['red', 'orange','darkblue','darkgreen', 'brown', 'darkorange'];
 const height = ['35','40','45', '30'];
 
 let myLibrary= [];
 //object constructor
-let newBook;
+let newBook; // creates paragraph for each book on display
 function Book(title, autor, year, pages, radio){
     this.title = title;
     this.autor = autor;
@@ -88,14 +91,12 @@ function shelfBooks(title, autor, year, pages, radio){
     shelf1.appendChild(newBook);
     newBook.textContent = book.title + ', by: ' + book.autor + ',  ' + book.year;
     node = document.querySelectorAll('#shelf1 > p');
-    console.log(newBook);
-    console.log(node);
 }
 
 shelfBooks('The Pilgrims Progress', 'John Bunyan ', '1678', '234','yes');
 shelfBooks('Clarissa', 'Samuel Richardson', '1748', '335', 'no');
 shelfBooks('Nineteen Eighty-Four', 'George Orwell', '1949', '432', 'no');
-shelfBooks('Petre', 'Zoia', '2004', '231', 'yes');
+shelfBooks('Petre', 'Domnica', '2004', '231', 'yes');
 shelfBooks('Diana', 'Zoia', '2007', '146', 'yes');
 shelfBooks('Enigma Otiliei', 'George Călinescu', '1938', '243', 'no');
 shelfBooks('Moara cu Noroc','Ioan Slavici', '1881', '323', 'yes');
@@ -106,7 +107,6 @@ console.log(myLibrary.length);
 let n = 0 // create node
 let h = 0; //style book thikeness 
 function addBook(){
-    //    node[n +1];
         np = np + 1;
         let b = Math.floor(Math.random() * 5);
         h = Math.floor(Math.random() * 4);
@@ -117,7 +117,6 @@ function addBook(){
         radioInput(yes, no);
         book= new Book(title, autor, year, pages, radio);
         myLibrary.push(book);
-        let position = myLibrary.indexOf(book);
         newBook = document.createElement('p');
         newBook.classList.add(`book${np}`,'book');
         if(myLibrary.length < 10 ){
@@ -125,14 +124,9 @@ function addBook(){
         }else {
             shelf2.appendChild(newBook);
         }
-    //    newBook.setAttribute('style', `background:${rbw[b]}`);//`height:${height[h]}px`);
         newBook.style.backgroundColor = `${rbw[b]}`;
         newBook.style.height= `${height[h]}px`;
         newBook.textContent = book.title + ',  by:' + book.autor + ',  ' + book.year;
-        console.log(book);
-        console.log(position);
-        console.log(myLibrary.length);
-        console.table(myLibrary);
         t.value = '';
         a.value = '';
         y.value = '';
@@ -142,16 +136,14 @@ function addBook(){
 
     }
 
-add.addEventListener('click', () => {
-   // check();
+add.addEventListener('click', () => { // add book at library
     if (t.value == 0) return; 
     addBook();
     document.getElementById('dem').innerHTML = '';
     document.getElementById('book_index').innerHTML = '';
-    console.log(node);
 
 });
-t.addEventListener('click', () => {
+t.addEventListener('click', () => { //clear the form and save read status
     t.value = '';
     document.getElementById('dem').innerHTML = '';
     document.getElementById('book_index').innerHTML = '';
@@ -160,55 +152,89 @@ t.addEventListener('click', () => {
     p.value = '';
     uncheck();
 });
+a.addEventListener('click', () => {
+    t.value = '';
+    document.getElementById('dem').innerHTML = '';
+    document.getElementById('book_index').innerHTML = '';
+    a.value = '';
+    y.value = '';
+    p.value = '';
+    uncheck();
+})
 
 let look = false; // lookfor button linked with remove button
-function lookTitle(){
+function indxT(){
+    index = myLibrary.findIndex(book => book.title == t.value);
+    return index + 1;
+}
+function indxA(){
+    index = myLibrary.findIndex(book => book.autor == a.value);
+    return index + 1;
+}
+
+function lookTitelAutor(){ // look for title or autor
     look = true;
     let xTitle = t.value;
-    let book_item = myLibrary.find(item => item.title == xTitle);
-    if (book_item == undefined){
-        return 'Sorry, This book is not in the Library';
-    }else{
-    return 'title: '+ xTitle +',   by:  ' + book_item.autor + ',  year: ' + book_item.year + ',    ' + book_item.pages + ' pages.';
-    }
-}
-let index;
+    let xAutor = a.value;
+    let book_item;
+    if ( xTitle != '' && xAutor == ''){
+        book_item = myLibrary.find(item => item.title == xTitle);
+        if(book_item == undefined){
+            return 'Sorry, This book is not in the Library';
+        }else{
+            document.getElementById('book_index').innerHTML = 'book at index:  ' + indxT();
+            t.value = myLibrary[index].title;
+            a.value = myLibrary[index].autor;
+            y.value = myLibrary[index].year;
+            p.value = myLibrary[index].pages;
+            xRadio = myLibrary[index].radio;
+            return 'title: '+ xTitle +',   by:  ' + book_item.autor + ',  year: ' + book_item.year + ',    ' + book_item.pages + ' pages.';
 
-function lookIndex(){
-    let xIndex = t.value;
-    if(xIndex != 0){
-    index = myLibrary.findIndex(book => book.title == xIndex);
-    console.log(index);
-    return index;
+        }
+    }else if (xTitle == '' && xAutor != ''){
+        book_item = myLibrary.find(item => item.autor == xAutor);
+        if (book_item == undefined){
+            return 'Sorry, no books by this Autor in the library';
+        }else {
+            document.getElementById('book_index').innerHTML = 'book at index:  ' + indxA();
+            return  'title:  ' + book_item.title  + ',   year: ' + book_item.year + ',  ' + book_item.pages + ' pages.';
+        }
     }
 }
+
 lookfor.addEventListener('click', () => {
-    document.getElementById('dem').innerHTML = lookTitle();
-    let z = lookIndex() + 1;
-    if (z == undefined || z == -1 || z == 0) return;
-    document.getElementById('book_index').innerHTML = 'Book at index:  ' + z + '  on shelf';
-    if (index == undefined || index == NaN || index == -1)  return;
-    else if (index != undefined || index != -1){
-        a.value = myLibrary[index].autor;
-        y.value = myLibrary[index].year;
-        p.value = myLibrary[index].pages;
-        let xRadio = myLibrary[index].radio;
-        console.log(xRadio); 
+    if (t.value == '' && a.value == '') return;
+   document.getElementById('dem').innerHTML = lookTitelAutor();
+  // document.getElementById('book_index').innerHTML = indxT();
+
+
+       /* let z = lookforIndex(t) + 1;
+        if (z == undefined || z == -1 || z == 0 || z == NaN) return;
+
+        document.getElementById('book_index').innerHTML = 'Book at index:  ' + z + '  on shelf';
+        if (index == undefined || index == NaN || index == -1)  return;
+        else *///if (index != undefined || index != -1){
+        //    t.value = myLibrary[index].title;
+         //   a.value = myLibrary[index].autor;
+         //   y.value = myLibrary[index].year;
+         //   p.value = myLibrary[index].pages;
+        //    xRadio = myLibrary[index].radio;
+            //document.getElementById('book_index').innerHTML = 'Book at index:  ' + z + '  on shelf';
+           //return index;
+    //    } 
         if ( xRadio == 'yes'){          
             checkY();
         }else if (xRadio == 'no'){
             checkN();
         }
-        
         yes.addEventListener('click', () => {
             myLibrary[index].radio = 'yes';
         });
         no.addEventListener('click', () => {
             myLibrary[index].radio = 'no'
-        })
-    }
-    console.log(lookIndex());
-    console.log(index);
+        });
+       
+    //console.log(index);
     return index;
 });
    
@@ -218,9 +244,6 @@ remove.addEventListener('click', (e) => {
     if(index == undefined  || index == -1 || look == false) return;
     myLibrary.splice(index, 1);
     node[index].remove(index);
-   
-  //  node[index].remove(node[index]);
-
     look = false;
     t.value = '';
     a.value = '';
