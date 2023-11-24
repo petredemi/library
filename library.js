@@ -41,8 +41,8 @@ function radioInput(yes, no){
     return radio;
 }
 
-function checkReading(){
-    if(radio == 'yes'){
+/*function checkReading(){
+    if(radio == 'yes'){x
         checkY();
         uncheckN();
     } else if(radio == 'no'){
@@ -51,9 +51,22 @@ function checkReading(){
     }else{
         uncheck();    
     }
-}
-function saveChanges(){
-    return radioInput();
+}*/
+//function saveChanges(){
+  //  return radioInput();
+//}
+function updateRadio(){
+        if ( xRadio == 'yes'){          
+            checkY();
+        }else if (xRadio == 'no'){
+            checkN();
+        }
+        yes.addEventListener('click', () => {
+            myLibrary[index].radio = 'yes';
+        });
+        no.addEventListener('click', () => {
+            myLibrary[index].radio = 'no'
+        });
 }
 
 let node; // node created -nodelist
@@ -133,7 +146,6 @@ function addBook(){
         p.value = '';
         node = document.querySelectorAll('#shelf1 > p, .shelf2 > p');
         uncheck();
-
     }
 
 add.addEventListener('click', () => { // add book at library
@@ -163,16 +175,16 @@ a.addEventListener('click', () => {
 })
 
 let look = false; // lookfor button linked with remove button
-function indxT(){
+function indxT(){ // find index by title
     index = myLibrary.findIndex(book => book.title == t.value);
     return index + 1;
 }
-function indxA(){
+function indxA(){ // find index by autor
     index = myLibrary.findIndex(book => book.autor == a.value);
     return index + 1;
 }
 
-function lookTitelAutor(){ // look for title or autor
+function lookTitelAutor(){ // look for title or autor function
     look = true;
     let xTitle = t.value;
     let xAutor = a.value;
@@ -181,6 +193,7 @@ function lookTitelAutor(){ // look for title or autor
         book_item = myLibrary.find(item => item.title == xTitle);
         if(book_item == undefined){
             return 'Sorry, This book is not in the Library';
+
         }else{
             document.getElementById('book_index').innerHTML = 'book at index:  ' + indxT();
             t.value = myLibrary[index].title;
@@ -188,8 +201,8 @@ function lookTitelAutor(){ // look for title or autor
             y.value = myLibrary[index].year;
             p.value = myLibrary[index].pages;
             xRadio = myLibrary[index].radio;
+            updateRadio();
             return 'title: '+ xTitle +',   by:  ' + book_item.autor + ',  year: ' + book_item.year + ',    ' + book_item.pages + ' pages.';
-
         }
     }else if (xTitle == '' && xAutor != ''){
         book_item = myLibrary.find(item => item.autor == xAutor);
@@ -197,6 +210,21 @@ function lookTitelAutor(){ // look for title or autor
             return 'Sorry, no books by this Autor in the library';
         }else {
             document.getElementById('book_index').innerHTML = 'book at index:  ' + indxA();
+            updateRadio();
+        
+            /*    if ( xRadio == 'yes'){          
+                checkY();
+            }else if (xRadio == 'no'){
+                checkN();
+            }
+            yes.addEventListener('click', () => {
+                myLibrary[index].radio = 'yes';
+            });
+            no.addEventListener('click', () => {
+                myLibrary[index].radio = 'no'
+            
+            });
+            */
             return  'title:  ' + book_item.title  + ',   year: ' + book_item.year + ',  ' + book_item.pages + ' pages.';
         }
     }
@@ -205,24 +233,7 @@ function lookTitelAutor(){ // look for title or autor
 lookfor.addEventListener('click', () => {
     if (t.value == '' && a.value == '') return;
    document.getElementById('dem').innerHTML = lookTitelAutor();
-  // document.getElementById('book_index').innerHTML = indxT();
-
-
-       /* let z = lookforIndex(t) + 1;
-        if (z == undefined || z == -1 || z == 0 || z == NaN) return;
-
-        document.getElementById('book_index').innerHTML = 'Book at index:  ' + z + '  on shelf';
-        if (index == undefined || index == NaN || index == -1)  return;
-        else *///if (index != undefined || index != -1){
-        //    t.value = myLibrary[index].title;
-         //   a.value = myLibrary[index].autor;
-         //   y.value = myLibrary[index].year;
-         //   p.value = myLibrary[index].pages;
-        //    xRadio = myLibrary[index].radio;
-            //document.getElementById('book_index').innerHTML = 'Book at index:  ' + z + '  on shelf';
-           //return index;
-    //    } 
-        if ( xRadio == 'yes'){          
+      /*  if ( xRadio == 'yes'){          
             checkY();
         }else if (xRadio == 'no'){
             checkN();
@@ -233,8 +244,7 @@ lookfor.addEventListener('click', () => {
         no.addEventListener('click', () => {
             myLibrary[index].radio = 'no'
         });
-       
-    //console.log(index);
+       */
     return index;
 });
    
