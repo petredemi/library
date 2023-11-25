@@ -7,6 +7,7 @@ let shelf1 = document.querySelector('#shelf1');
 let shelf2 = document.querySelector('.shelf2');
 let yes = document.querySelector('#yes');
 let no = document.querySelector('#no');
+let books_found = document.querySelector('#books_found');
 
 //radio check functions Y for yes and N for no 
 function checkY() { 
@@ -41,21 +42,7 @@ function radioInput(yes, no){
     return radio;
 }
 
-/*function checkReading(){
-    if(radio == 'yes'){x
-        checkY();
-        uncheckN();
-    } else if(radio == 'no'){
-        checkN();
-        uncheckY();
-    }else{
-        uncheck();    
-    }
-}*/
-//function saveChanges(){
-  //  return radioInput();
-//}
-function updateRadio(){
+function updateRadio(){ // update radio buttons after search for title or autor
         if ( xRadio == 'yes'){          
             checkY();
         }else if (xRadio == 'no'){
@@ -105,8 +92,8 @@ function shelfBooks(title, autor, year, pages, radio){
     newBook.textContent = book.title + ', by: ' + book.autor + ',  ' + book.year;
     node = document.querySelectorAll('#shelf1 > p');
 }
-
-shelfBooks('The Pilgrims Progress', 'John Bunyan ', '1678', '234','yes');
+shelfBooks('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes');
+shelfBooks('The Pilgrims Progress', 'John Bunyan ', '1678', '234','no');
 shelfBooks('Clarissa', 'Samuel Richardson', '1748', '335', 'no');
 shelfBooks('Nineteen Eighty-Four', 'George Orwell', '1949', '432', 'no');
 shelfBooks('Petre', 'Domnica', '2004', '231', 'yes');
@@ -165,7 +152,6 @@ t.addEventListener('click', () => { //clear the form and save read status
     uncheck();
 });
 a.addEventListener('click', () => {
-    t.value = '';
     document.getElementById('dem').innerHTML = '';
     document.getElementById('book_index').innerHTML = '';
     a.value = '';
@@ -196,7 +182,6 @@ function lookTitelAutor(){ // look for title or autor function
 
         }else{
             document.getElementById('book_index').innerHTML = 'book at index:  ' + indxT();
-            t.value = myLibrary[index].title;
             a.value = myLibrary[index].autor;
             y.value = myLibrary[index].year;
             p.value = myLibrary[index].pages;
@@ -211,20 +196,6 @@ function lookTitelAutor(){ // look for title or autor function
         }else {
             document.getElementById('book_index').innerHTML = 'book at index:  ' + indxA();
             updateRadio();
-        
-            /*    if ( xRadio == 'yes'){          
-                checkY();
-            }else if (xRadio == 'no'){
-                checkN();
-            }
-            yes.addEventListener('click', () => {
-                myLibrary[index].radio = 'yes';
-            });
-            no.addEventListener('click', () => {
-                myLibrary[index].radio = 'no'
-            
-            });
-            */
             return  'title:  ' + book_item.title  + ',   year: ' + book_item.year + ',  ' + book_item.pages + ' pages.';
         }
     }
@@ -233,18 +204,6 @@ function lookTitelAutor(){ // look for title or autor function
 lookfor.addEventListener('click', () => {
     if (t.value == '' && a.value == '') return;
    document.getElementById('dem').innerHTML = lookTitelAutor();
-      /*  if ( xRadio == 'yes'){          
-            checkY();
-        }else if (xRadio == 'no'){
-            checkN();
-        }
-        yes.addEventListener('click', () => {
-            myLibrary[index].radio = 'yes';
-        });
-        no.addEventListener('click', () => {
-            myLibrary[index].radio = 'no'
-        });
-       */
     return index;
 });
    
