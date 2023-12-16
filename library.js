@@ -194,8 +194,8 @@ function lookTitelAutor(){ // look for title or autor function
         if (book_item == undefined){
             return 'Sorry, no books by this Autor in the library';
         }else {
+          //  updateRadio();
             document.getElementById('book_index').innerHTML = 'book at index:  ' + indxA();
-            updateRadio();
             return  'title:  ' + book_item.title  + ',   year: ' + book_item.year + ',  ' + book_item.pages + ' pages.';
         }
     }
