@@ -27,16 +27,17 @@ body{
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
-    background: linear-gradient( to Right, rgb(164, 163, 163), white, rgb(170, 168, 168), white, rgb(184, 181, 181));
+    background: linear-gradient( 130deg, rgb(231, 77, 77), white, rgb(92, 138, 189), white, rgb(252, 56, 56));
 }
 .library_inputs{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:tomato;
+    background-color:rgb(187, 253, 226);
     border-radius: 20px;
     border: 5px solid black;
+    box-shadow: 5px 4px 3px rgb(91, 89, 89);
     margin-bottom: 1px;
     margin-right: 20px;
 }
@@ -47,7 +48,7 @@ h1 {
     font-weight: 900;
     font-size: 5rem;
     width: 400px;
-    color: rgb(27, 31, 246);
+    color: rgb(255, 25, 25);
     text-shadow: 1px 1px 1px black;
 
 }
@@ -106,7 +107,7 @@ fieldset{
     width: 400px; 
     border: 2px solid black;
     border-radius: 5px;
-    background: antiquewhite;
+    background: linear-gradient( 10deg, rgb(164, 163, 163), white, rgb(170, 168, 168), white, rgb(184, 181, 181));
 
 }
 fieldset p{
@@ -220,7 +221,7 @@ label{
     border: 1px solid black;
     height: 2rem;
     width: 350px;
-    margin:3px;
+    margin:2px;
     color: rgb(202, 196, 196);
     font-size: 1.1rem;
     border: 2px solid black;

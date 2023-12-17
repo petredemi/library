@@ -5,9 +5,9 @@ const remove = document.querySelector('#remove');
 const lookfor = document.querySelector('#lookfor');
 let shelf1 = document.querySelector('#shelf1');
 let shelf2 = document.querySelector('.shelf2');
-let yes = document.querySelector('#yes');
-let no = document.querySelector('#no');
-let books_found = document.querySelector('#books_found');
+let yes = document.querySelector('#yes'); // radio check button
+let no = document.querySelector('#no'); //radio check button
+//let books_found = document.querySelector('#books_found');
 
 //radio check functions Y for yes and N for no 
 function checkY() { 
@@ -65,7 +65,7 @@ let p = document.querySelector('#pages');
 let index; // books in lybrary array;
 
 
-const rbw = ['red', 'orange','darkblue','darkgreen', 'brown', 'darkorange'];
+const rbw = ['red', 'darkorange','darkblue','darkgreen', 'brown'];
 const height = ['35','40','45', '30'];
 
 let myLibrary= [];
@@ -108,7 +108,7 @@ let n = 0 // create node
 let h = 0; //style book thikeness 
 function addBook(){
         np = np + 1;
-        let b = Math.floor(Math.random() * 5);
+        let b = Math.floor(Math.random() * 4);// books colors
         h = Math.floor(Math.random() * 4);
         title = t.value;
         autor = a.value;
