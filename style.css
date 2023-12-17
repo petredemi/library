@@ -96,10 +96,10 @@ li.label1{
     width: fit-content;
 }
 legend{
-    font-size: 2rem;
-    color: rgb(9, 9, 10);
+    font-size: 1.8rem;
+    color: rgb(6, 221, 120);
     font-weight: 800;
-    text-shadow: 2px 2px 1px white;
+    text-shadow: 2px 2px 1px rgb(12, 12, 12);
 
 }
 fieldset{
