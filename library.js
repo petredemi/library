@@ -70,6 +70,16 @@ const rbw = ['red', 'orange','darkblue','darkgreen', 'brown', 'darkorange'];
 const height = ['35','40','45', '25'];
 
 let myLibrary= [];
+function getBook(){
+    let text = localStorage.getItem('testjson');
+    let mymem = JSON.parse(text);
+    if(mymem.length == null){return}
+    for(let i = 3; i < mymem.length; i++){
+       shelfBooks(mymem[i].title, mymem[i].autor, mymem[i].year, mymem[i].pages, mymem[i].radio)
+    }
+    console.log(mymem)
+}
+
 //object constructor
 let newBook; // creates paragraph for each book on display
 function Book(title, autor, year, pages, radio){
@@ -123,6 +133,9 @@ let np = 2; // number of books created
 shelfBooks('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes');
 shelfBooks('Enigma Otiliei', 'George Calinescu', '1938', '243', 'no');
 shelfBooks('Moara cu Noroc','Ioan Slavici', '1881', '323', 'yes');
+//let localmemory = JSON.stringify(myLibrary)
+//localStorage.setItem('testjson', localmemory)
+//getBook()
 console.table(myLibrary);
 console.log(myLibrary.length);
 
@@ -166,6 +179,8 @@ function addBook(){
 add.addEventListener('click', () => { // add book at library
     if (t.value == 0) return; 
     addBook();
+   let localmemory = JSON.stringify(myLibrary)
+    localStorage.setItem('testjson', localmemory)
     document.getElementById('dem').innerHTML = '';
     document.getElementById('book_index').innerHTML = '';
     console.table(myLibrary)
