@@ -133,8 +133,6 @@ let np = 2; // number of books created
 shelfBooks('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes');
 shelfBooks('Enigma Otiliei', 'George Calinescu', '1938', '243', 'no');
 shelfBooks('Moara cu Noroc','Ioan Slavici', '1881', '323', 'yes');
-//let localmemory = JSON.stringify(myLibrary)
-//localStorage.setItem('testjson', localmemory)
 //getBook()
 console.table(myLibrary);
 console.log(myLibrary.length);
