@@ -121,11 +121,6 @@ let np = 2; // number of books created
     
 //radioInput(yes, no);
 shelfBooks('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes');
-//shelfBooks('The Pilgrims Progress', 'John Bunyan ', '1678', '234','no');
-//shelfBooks('Clarissa', 'Samuel Richardson', '1748', '335', 'no');
-//shelfBooks('Nineteen Eighty-Four', 'George Orwell', '1949', '432', 'no');
-//shelfBooks('Petre', 'Domnica', '2004', '231', 'yes');
-//shelfBooks('Diana', 'Zoia', '2007', '146', 'yes');
 shelfBooks('Enigma Otiliei', 'George Calinescu', '1938', '243', 'no');
 shelfBooks('Moara cu Noroc','Ioan Slavici', '1881', '323', 'yes');
 console.table(myLibrary);
@@ -238,9 +233,6 @@ lookfor.addEventListener('click', () => {
    document.getElementById('dem').innerHTML = lookTitelAutor();
     return index;
 });
-   
-console.log(node);
-
 remove.addEventListener('click', (e) => {
     if(index == undefined  || index == -1 || look == false) return;
     myLibrary.splice(index, 1);
@@ -258,5 +250,4 @@ remove.addEventListener('click', (e) => {
     console.log(node);
     console.table(myLibrary);
     node = document.querySelectorAll('#shelf1 > p, .shelf2 > p');
-
 });
