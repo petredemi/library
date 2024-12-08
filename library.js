@@ -8,12 +8,13 @@ let shelf2 = document.querySelector('.shelf2');
 let yes = document.querySelector('#yes');
 let no = document.querySelector('#no');
 let books_found = document.querySelector('#books_found');
+let full = document.querySelector('.full');
 
 //radio check functions Y for yes and N for no 
 function checkY() { 
     document.getElementById("yes").checked = true;
   }
-  function uncheckY(){
+function uncheckY(){
     document.getElementById('yes').checked = false;
   }
 function checkN(){
@@ -62,11 +63,11 @@ let t = document.querySelector('#title');
 let a = document.querySelector('#autor');
 let y = document.querySelector('#year');
 let p = document.querySelector('#pages');
-let index; // books in lybrary array;
+let index; // books in library array;
 
-
+//books covers color and thikness
 const rbw = ['red', 'orange','darkblue','darkgreen', 'brown', 'darkorange'];
-const height = ['35','40','45', '30'];
+const height = ['35','40','45', '25'];
 
 let myLibrary= [];
 //object constructor
@@ -79,34 +80,64 @@ function Book(title, autor, year, pages, radio){
     this.radio = radio;     
 }
 
+let np = 2; // number of books created
+//class Clas{ //create objects by class
+//    np = np + 1;
+//        constructor(title, autor, year, pages, radio){
+//        this.title = title;
+//        this.autor = autor;
+//        this.year = year;
+//        this.pages = pages;
+//        this.radio = radio;     
+//    }
+//        shelfBooks(){
+//            np = np + 1;
+//            myLibrary.push(constructor);
+//            newBook = document.createElement('p');
+//            newBook.classList.add(`book${np}`, 'book');
+//            shelf1.appendChild(newBook);
+//            newBook.textContent = this.title + ', by: ' + this.autor + ',  ' + this.year;
+//            node = document.querySelectorAll('#shelf1 > p');
+//    }
+//}
+//let book1 = new Clas('Moara cu Noroc','Ioan Slavici', '1881', '323', 'yes');
+//let book2 = new Clas('Enigma Otiliei', 'George Călinescu', '1938', '243', 'no');
+//let book3 = new Clas('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes');
+//book1.shelfBooks();
+//book2.shelfBooks();
+//book3.shelfBooks();
+////create object by function
+  function shelfBooks(title, autor, year, pages, radio){
+        radioInput(yes, no);
+        np = np + 1;
+        book= new Book(title, autor, year, pages, radio);
+        myLibrary.push(book);
+        newBook = document.createElement('p');
+        newBook.classList.add(`book${np}`, 'book');
+        shelf1.appendChild(newBook);
+        newBook.textContent = book.title + ', by: ' + book.autor + ',  ' + book.year;
+        node = document.querySelectorAll('#shelf1 > p');
+    }
+    
 //radioInput(yes, no);
-let np = 0; // number of <p>created
-function shelfBooks(title, autor, year, pages, radio){
-    radioInput(yes, no);
-    np = np + 1;
-    book= new Book(title, autor, year, pages, radio);
-    myLibrary.push(book);
-    newBook = document.createElement('p');
-    newBook.classList.add(`book${np}`, 'book');
-    shelf1.appendChild(newBook);
-    newBook.textContent = book.title + ', by: ' + book.autor + ',  ' + book.year;
-    node = document.querySelectorAll('#shelf1 > p');
-}
 shelfBooks('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes');
-shelfBooks('The Pilgrims Progress', 'John Bunyan ', '1678', '234','no');
-shelfBooks('Clarissa', 'Samuel Richardson', '1748', '335', 'no');
-shelfBooks('Nineteen Eighty-Four', 'George Orwell', '1949', '432', 'no');
-shelfBooks('Petre', 'Domnica', '2004', '231', 'yes');
-shelfBooks('Diana', 'Zoia', '2007', '146', 'yes');
-shelfBooks('Enigma Otiliei', 'George Călinescu', '1938', '243', 'no');
+//shelfBooks('The Pilgrims Progress', 'John Bunyan ', '1678', '234','no');
+//shelfBooks('Clarissa', 'Samuel Richardson', '1748', '335', 'no');
+//shelfBooks('Nineteen Eighty-Four', 'George Orwell', '1949', '432', 'no');
+//shelfBooks('Petre', 'Domnica', '2004', '231', 'yes');
+//shelfBooks('Diana', 'Zoia', '2007', '146', 'yes');
+shelfBooks('Enigma Otiliei', 'George Calinescu', '1938', '243', 'no');
 shelfBooks('Moara cu Noroc','Ioan Slavici', '1881', '323', 'yes');
-
 console.table(myLibrary);
 console.log(myLibrary.length);
 
 let n = 0 // create node
 let h = 0; //style book thikeness 
 function addBook(){
+    if (myLibrary.length > 12){
+        full.textContent = 'shelves are full';
+        return;
+    }
         np = np + 1;
         let b = Math.floor(Math.random() * 5);
         h = Math.floor(Math.random() * 4);
@@ -119,9 +150,10 @@ function addBook(){
         myLibrary.push(book);
         newBook = document.createElement('p');
         newBook.classList.add(`book${np}`,'book');
-        if(myLibrary.length < 10 ){
+        if(myLibrary.length < 7 ){
             shelf1.appendChild(newBook);
-        }else {
+        }else if(myLibrary.length > 6){
+            shelf2.style.display = 'flex'
             shelf2.appendChild(newBook);
         }
         newBook.style.backgroundColor = `${rbw[b]}`;
@@ -133,6 +165,7 @@ function addBook(){
         p.value = '';
         node = document.querySelectorAll('#shelf1 > p, .shelf2 > p');
         uncheck();
+
     }
 
 add.addEventListener('click', () => { // add book at library
@@ -140,6 +173,7 @@ add.addEventListener('click', () => { // add book at library
     addBook();
     document.getElementById('dem').innerHTML = '';
     document.getElementById('book_index').innerHTML = '';
+    console.table(myLibrary)
 
 });
 t.addEventListener('click', () => { //clear the form and save read status
@@ -162,41 +196,39 @@ a.addEventListener('click', () => {
 
 let look = false; // lookfor button linked with remove button
 function indxT(){ // find index by title
-    index = myLibrary.findIndex(book => book.title == t.value);
-    return index + 1;
+    index = myLibrary.findIndex(book => book.title.toLowerCase() == t.value.toLowerCase());
+    return index;
 }
 function indxA(){ // find index by autor
-    index = myLibrary.findIndex(book => book.autor == a.value);
-    return index + 1;
+    index = myLibrary.findIndex(book => book.autor.toLowerCase() == a.value.toLowerCase());
+    console.log(index)
+    console.log(typeof(index))
+    return index;
 }
-
 function lookTitelAutor(){ // look for title or autor function
     look = true;
-    let xTitle = t.value;
-    let xAutor = a.value;
-    let book_item;
-    if ( xTitle != '' && xAutor == ''){
-        book_item = myLibrary.find(item => item.title == xTitle);
-        if(book_item == undefined){
+    let inxtitle = indxT();
+    let inxautor = indxA()
+   if (t.value != '' && a.value == ''){
+        if (inxtitle == -1){
             return 'Sorry, This book is not in the Library';
 
         }else{
-            document.getElementById('book_index').innerHTML = 'book at index:  ' + indxT();
+            document.getElementById('book_index').innerHTML = 'book at index:  ' + (indxT() + 1);
             a.value = myLibrary[index].autor;
             y.value = myLibrary[index].year;
             p.value = myLibrary[index].pages;
             xRadio = myLibrary[index].radio;
             updateRadio();
-            return 'title: '+ xTitle +',   by:  ' + book_item.autor + ',  year: ' + book_item.year + ',    ' + book_item.pages + ' pages.';
+            return 'title: '+ myLibrary[index].title +', by:  ' + myLibrary[index].autor + ',  year: ' + myLibrary[index].year + ',    ' + myLibrary[index].pages + ' pages.';
         }
-    }else if (xTitle == '' && xAutor != ''){
-        book_item = myLibrary.find(item => item.autor == xAutor);
-        if (book_item == undefined){
+    }else if (t.value == '' && a.value != ''){
+        if (inxautor == -1){
             return 'Sorry, no books by this Autor in the library';
         }else {
           //  updateRadio();
-            document.getElementById('book_index').innerHTML = 'book at index:  ' + indxA();
-            return  'title:  ' + book_item.title  + ',   year: ' + book_item.year + ',  ' + book_item.pages + ' pages.';
+            document.getElementById('book_index').innerHTML = 'book at index:  ' + (indxA() + 1);
+            return  'title:  ' + myLibrary[index].title  + ',   year: ' +myLibrary[index].year + ',  ' + myLibrary[index].pages + ' pages.';
         }
     }
 }
@@ -213,6 +245,8 @@ remove.addEventListener('click', (e) => {
     if(index == undefined  || index == -1 || look == false) return;
     myLibrary.splice(index, 1);
     node[index].remove(index);
+    full.textContent = ''
+    index = '';
     look = false;
     t.value = '';
     a.value = '';
