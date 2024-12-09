@@ -8,6 +8,7 @@ let no = document.querySelector('#no');
 let books_found = document.querySelector('#books_found');
 let full = document.querySelector('.full');
 shelf2.style.display = 'none';
+let newBook; // creates paragraph for each book on display
 
 function checkY() { 
     document.getElementById("yes").checked = true;
@@ -61,31 +62,46 @@ let a = document.querySelector('#autor');
 let y = document.querySelector('#year');
 let p = document.querySelector('#pages');
 let index; // books in library array;
+let myLibrary= [];
+let np = myLibrary.length; //number of p elements-books
 
 //books covers color and thikness
 const rbw = ['red', 'orange','darkblue','darkgreen', 'brown', 'darkorange'];
 const height = ['30','50','60', '40'];
+function initialBooks(){
+        let txt = localStorage.getItem('testjson')
+        console.log(txt)
+    if(txt == null){
+        shelfBooks('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes', 2, 1);
+        shelfBooks('Enigma Otiliei', 'George Calinescu', '1938', '243', 'no', 0, 3);
 
-let myLibrary= [];
+        let localmemory = JSON.stringify(myLibrary)
+        localStorage.setItem('testjson', localmemory)
+    }else{
+        getBook()
+    }
+}
 function getBook(){
     let text = localStorage.getItem('testjson');
     let mymem = JSON.parse(text);
     if(mymem.length == null){return}
-    for(let i = 3; i < mymem.length; i++){
-       shelfBooks(mymem[i].title, mymem[i].autor, mymem[i].year, mymem[i].pages, mymem[i].radio)
+    for(let i = 0; i < mymem.length; i++){
+       shelfBooks(mymem[i].title, mymem[i].autor, mymem[i].year, mymem[i].pages, mymem[i].radio, mymem[i].color, mymem[i].thickness)
     }
     console.log(mymem)
 }
-let newBook; // creates paragraph for each book on display
-function Book(title, autor, year, pages, radio){
+//shelfBooks('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes', 2, 2);
+function Book(title, autor, year, pages, radio, color, thickness){
     this.title = title;
     this.autor = autor;
     this.year = year;
     this.pages = pages;
-    this.radio = radio;     
+    this.radio = radio;
+    this.color = color;
+    this.thickness = thickness;     
 }
 
-let np = 2; // number of books created
+// number of books created
 //class Clas{ //create objects by class
 //    np = np + 1;
 //        constructor(title, autor, year, pages, radio){
@@ -112,28 +128,36 @@ let np = 2; // number of books created
 //book2.shelfBooks();
 //book3.shelfBooks();
 ////create object by function
-  function shelfBooks(title, autor, year, pages, radio){
+  function shelfBooks(title, autor, year, pages, radio, c, h){
         radioInput(yes, no);
         np = np + 1;
-        book= new Book(title, autor, year, pages, radio);
+        book= new Book(title, autor, year, pages, radio, c, h);
         myLibrary.push(book);
         newBook = document.createElement('p');
         newBook.classList.add(`book${np}`, 'book');
-        shelf1.appendChild(newBook);
+        if(myLibrary.length < 7 ){
+            shelf1.appendChild(newBook);
+        }else if(myLibrary.length > 6){
+            shelf2.style.display = 'flex'
+            shelf2.appendChild(newBook);
+        }
+        newBook.style.backgroundColor = `${rbw[c]}`;
+        newBook.style.height= `${height[h]}px`;
         newBook.textContent = book.title + ', by: ' + book.autor + ',  ' + book.year;
         node = document.querySelectorAll('#shelf1 > p');
     }
     
 //radioInput(yes, no);
-shelfBooks('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes');
-shelfBooks('Enigma Otiliei', 'George Calinescu', '1938', '243', 'no');
-shelfBooks('Moara cu Noroc','Ioan Slavici', '1881', '323', 'yes');
+initialBooks()
+//getBook();
+//shelfBooks('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes', '2', '2');
+//shelfBooks('Enigma Otiliei', 'George Calinescu', '1938', '243', 'no');
+//shelfBooks('Moara cu Noroc','Ioan Slavici', '1881', '323', 'yes');
+console.log(np)
 //getBook()
 console.table(myLibrary);
 console.log(myLibrary.length);
 
-let n = 0 // create node
-let h = 0; //style book thikeness 
 function addBook(){
     if (myLibrary.length > 12){
         full.textContent = 'shelves are full';
@@ -141,13 +165,15 @@ function addBook(){
     }
         np = np + 1;
         let b = Math.floor(Math.random() * 5);
-        h = Math.floor(Math.random() * 4);
+        let h = Math.floor(Math.random() * 4);
         title = t.value;
         autor = a.value;
         year = y.value;
         pages = p.value;
+        color = b;
+        thickness = h;
         radioInput(yes, no);
-        book= new Book(title, autor, year, pages, radio);
+        book= new Book(title, autor, year, pages, radio, b, h);
         myLibrary.push(book);
         newBook = document.createElement('p');
         newBook.classList.add(`book${np}`,'book');
@@ -245,6 +271,8 @@ remove.addEventListener('click', (e) => {
     if(index == undefined  || index == -1 || look == false) return;
     myLibrary.splice(index, 1);
     node[index].remove(index);
+    let localmemory = JSON.stringify(myLibrary)
+    localStorage.setItem('testjson', localmemory)
     full.textContent = ''
     index = '';
     look = false;

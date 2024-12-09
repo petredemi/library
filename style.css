@@ -27,6 +27,7 @@ body{
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
+    margin-top: 20px;
 }
 .library_inputs{
     display: flex;
@@ -48,6 +49,7 @@ h2{
     font-size: 3.5rem;
     color: rgb(255, 25, 25);
     text-shadow: 1px 1px 1px black;
+    margin-top: 20px;
     margin-bottom: 20px;
 
 }
@@ -165,7 +167,6 @@ label{
 #book_index, #dem{
     border-radius: 10px;
     min-height: 80px;
-    border: 1px solid rgb(225, 1, 1);
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -173,10 +174,10 @@ label{
 #book_index{
     display: flex;
     align-items: end;
-    min-width: 80px;
+    width: 70px;
     background:white;
     color: black;
-    margin-right: 20px;
+    margin-right: 1px;
     font-size: 1.1rem;
     padding: 5px;
     justify-content:center;
@@ -187,12 +188,14 @@ label{
     display: flex;
     color: rgb(255, 17, 17);
     text-shadow: 1px 1px 1px black;
-    font-weight: 600;
+    font-weight: 500;
     min-width: 230px;
+    max-width: 310px;
     align-items:center;
     padding: 5px;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    border: 1px solid red;
 }
 .shelfs{
     max-width: 380px;
@@ -211,7 +214,7 @@ label{
     padding-right: 10px;
     padding-top: 2px;
     padding-bottom: 10px;
-    max-width: 380px;
+    width: 380px;
     min-height: 370px;
     margin: 1px;
     margin-top: 6px;
@@ -238,6 +241,7 @@ label{
     height: 20px;
     width: 200px;
 }
+/*
 .book1{
     background: brown;
     color: yellow;
@@ -257,6 +261,7 @@ label{
     color: rgb(247, 233, 233);
     border: 2px solid black;
     font-size: 1.1rem;
+    height: 50px;
 }
 .book4{
     background: rgb(2, 76, 15);
@@ -276,5 +281,5 @@ label{
     color: silver;
     border: 2px solid black;
     font-size: 1.1rem;
-}
+}*/
 
