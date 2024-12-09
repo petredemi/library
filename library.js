@@ -65,7 +65,7 @@ let index; // books in library array;
 
 //books covers color and thikness
 const rbw = ['red', 'orange','darkblue','darkgreen', 'brown', 'darkorange'];
-const height = ['35','40','45', '25'];
+const height = ['30','50','60', '40'];
 
 let myLibrary= [];
 function getBook(){
