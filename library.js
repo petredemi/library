@@ -1,5 +1,3 @@
-
-
 const add = document.querySelector('#add');
 const remove = document.querySelector('#remove');
 const lookfor = document.querySelector('#lookfor');
@@ -9,6 +7,7 @@ let yes = document.querySelector('#yes');
 let no = document.querySelector('#no');
 let books_found = document.querySelector('#books_found');
 let full = document.querySelector('.full');
+shelf2.style.display = 'none';
 
 function checkY() { 
     document.getElementById("yes").checked = true;

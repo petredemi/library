@@ -48,6 +48,7 @@ h2{
     font-size: 3.5rem;
     color: rgb(255, 25, 25);
     text-shadow: 1px 1px 1px black;
+    margin-bottom: 20px;
 
 }
 
@@ -115,6 +116,13 @@ fieldset p{
     font-size: 1.2rem;
     text-align: center;
     font-weight: 400;
+}
+.full{
+    margin-top: 10px;
+    background: lightgreen;
+    min-width: 180px;
+    text-align: center;
+    min-height: 25px;
 }
 .buttons{
     box-sizing: border-box;
