@@ -67,14 +67,13 @@ let np = myLibrary.length; //number of p elements-books
 
 //books covers color and thikness
 const rbw = ['red', 'orange','darkblue','darkgreen', 'brown', 'darkorange'];
-const height = ['30','50','60', '40'];
+const height = ['25','35','45', '50'];
 function initialBooks(){
         let txt = localStorage.getItem('testjson')
         console.log(txt)
     if(txt == null){
         shelfBooks('The Happy Prince and Other Tales', 'Oscar Wild', '1888', '189', 'yes', 2, 1);
         shelfBooks('Enigma Otiliei', 'George Calinescu', '1938', '243', 'no', 0, 3);
-
         let localmemory = JSON.stringify(myLibrary)
         localStorage.setItem('testjson', localmemory)
     }else{
